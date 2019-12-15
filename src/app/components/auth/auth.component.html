@@ -1,0 +1,93 @@
+<div class="main-container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        <div class="space-24"></div>
+                        <div class="space-24"></div>
+                        <div class="space-24"></div>
+                        <div class="space-24"></div>
+                        <div class="position-relative">
+                            <div id="login-box" class="login-box visible widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header text-center blue lighter bigger">
+                                            <i class="ace-icon fa fa-coffee green"></i>
+                                            Đăng Nhập Vào Hệ Thống
+                                        </h4>
+
+                                        <div class="space-6"></div>
+
+                                        
+                                        <form [formGroup]="FormLogin" (ngSubmit)="onSubmitLogin()">
+                                            
+                                                <div>
+                                                    <span *ngIf="submitted && f.username.errors" for="form-field-mask-3">
+                                                        <i class="ace-icon red fa fa-exclamation-circle"></i> 
+                                                        <span  *ngIf="f.username.errors.required" class="text-error red">
+                                                            Vui lòng nhập ID
+                                                        </span>
+                                                    </span>
+                                                    <div class="input-group">
+                                                        <input formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"  placeholder="ID"  class="form-control input-mask-product" type="text" id="form-field-mask-3">
+                                                        <span class="input-group-addon">
+                                                            <i class="ace-icon fa fa-user"></i>
+                                                        </span>
+                                                      
+                                                    </div>
+                                                   
+                                                </div>
+                                                <div class="space space-4"></div>
+                                                <div>
+                                                    <span *ngIf="submitted && f.password.errors" for="form-field-mask-3">
+                                                        <i class="ace-icon red fa fa-exclamation-circle"></i> 
+                                                        <span  *ngIf="f.password.errors.required" class="text-error red">
+                                                            Vui lòng nhập mật khẩu
+                                                        </span>
+                                                    </span>
+                                                    <div class="input-group">
+                                                        <input formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"  placeholder="Mật khẩu"  class="form-control input-mask-product" type="text" id="form-field-mask-3">
+                                                        <span class="input-group-addon">
+                                                            <i class="ace-icon fa fa-lock"></i>
+                                                        </span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                                
+
+                                                <div class="space"></div>
+
+                                                <div class="clearfix">
+                                                    <label class="inline">
+                                                        <input type="checkbox" class="ace" />
+                                                        <span class="lbl"> Remember Me</span>
+                                                    </label>
+
+                                                    <button [disabled]="loading" type="submit" class="width-35 pull-right btn btn-sm btn-success">
+                                                        <i class="ace-icon fa fa-key"></i>
+                                                        <span class="bigger-110">Login</span> <i *ngIf="loading" class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>
+                                                      
+                                                    </button>
+                                                </div>
+
+                                                <div class="space-4"></div>
+                                           </form>  
+                                        
+                                        <div class="space-6"></div>
+
+                                        
+                                    </div><!-- /.widget-main -->
+
+                                    
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.login-box -->
+                       
+                        </div><!-- /.position-relative -->
+
+                        
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container -->

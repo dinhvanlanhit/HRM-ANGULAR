@@ -24,9 +24,29 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.min.css" ,
+              "src/assets/font-awesome/4.5.0/css/font-awesome.min.css" ,
+              "src/assets/css/fonts.googleapis.com.css" ,
+              "src/assets/css/ace.min.css",
+              "src/assets/css/jquery-ui.custom.min.css",
+              "src/assets/css/fullcalendar.min.css",
+              "src/assets/css/ace-skins.min.css" ,
+              "src/assets/css/ace-rtl.min.css" 
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/ace-extra.min.js",
+              "src/assets/js/jquery-2.1.4.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/jquery-ui.custom.min.js",
+              "src/assets/js/jquery.ui.touch-punch.min.js",
+              "src/assets/js/moment.min.js",
+              "src/assets/js/fullcalendar.min.js",
+              "src/assets/js/bootbox.js",
+              "src/assets/js/ace-elements.min.js",
+              "src/assets/js/ace.min.js"
+            ]
           },
           "configurations": {
             "production": {
