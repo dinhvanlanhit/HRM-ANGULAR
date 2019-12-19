@@ -15,27 +15,28 @@ import { TimecardDailyComponent } from './components/pages/timecard-daily/timeca
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
     path: '',
     component: LayoutAuthComponent,
     children: [
-      {path: 'login', component: AuthComponent},
+      {path: 'auth/login', component: AuthComponent},
     ]
   },
   {
     path: '',
     component: LayoutAdminComponent,
     children: [
+      
       {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
       {path: 'timecard', component: TimecardComponent,canActivate:[AuthGuard]},
       {path: 'timecard/daily', component: TimecardDailyComponent,canActivate:[AuthGuard]},
     ]
   },
  
-  {path: '**', redirectTo: 'login'}
+  {path: '**', redirectTo: 'dashboard'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

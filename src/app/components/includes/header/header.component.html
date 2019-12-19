@@ -11,7 +11,7 @@
             </button>
 
             <div class="navbar-header pull-left">
-                <a [routerLink]="['/']"  class="navbar-brand">
+                <a [routerLink]="['/dashboard']"  class="navbar-brand">
                     <small><strong>APP-HRM</strong></small>
                 </a>
             </div>
@@ -302,9 +302,9 @@
                             <li class="divider"></li>
 
                             <li>
-                                <a [routerLink]="['/login']">
+                                <a [attr.href]="['#']" (click)="logout()">
                                     <i class="ace-icon fa fa-power-off"></i>
-                                    Logout
+                                    Đăng xuất
                                 </a>
                             </li>
                         </ul>

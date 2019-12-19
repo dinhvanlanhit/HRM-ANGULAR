@@ -26,7 +26,7 @@ export class AuthComponent implements OnInit {
 
     // redirect to home if already logged in
     if (this._AuthService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/auth/login']);
   }
   }
   
@@ -35,10 +35,10 @@ export class AuthComponent implements OnInit {
   }
   createForm(){
     this.FormLogin = this._FormBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: ['073', Validators.required],
+      password: ['12345', Validators.required]
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
   }
   get f() { return this.FormLogin.controls; }
 
@@ -52,10 +52,15 @@ export class AuthComponent implements OnInit {
     .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    // this.router.navigate([this.returnUrl]);
+                    this.submitted = false;
+                    this.loading = false;
+                    window.location.href="dashboard";
+                    // alert(this.returnUrl);
                 },
                 error => {
                     // this.alertService.error(error);
+                    this.submitted = false;
                     this.loading = false;
                 });
     

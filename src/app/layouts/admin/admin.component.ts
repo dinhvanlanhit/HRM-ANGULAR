@@ -6,7 +6,6 @@ import {Component,OnInit} from '@angular/core';
 export class LayoutAdminComponent implements OnInit {
   constructor() { }
   ngOnInit() {
-    
-    document.body.className='no-skin';
+    document.body.className='skin-2';
   }
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION,PB_DIRECTION, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -18,6 +19,25 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 import { TimecardComponent } from './components/pages/timecard/timecard.component';
 import { TimecardDailyComponent } from './components/pages/timecard-daily/timecard-daily.component';
 
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsColor: 'red',
+  // bgsOpacity: 0.5,
+  // bgsPosition: POSITION.bottomCenter,
+  // bgsSize: 60,
+  // bgsType: SPINNER.rectangleBounce,
+  fgsColor: 'red',
+  // fgsPosition: POSITION.centerCenter,
+  // fgsSize: 60,
+  // fgsType: SPINNER.chasingDots,
+  // logoUrl: 'assets/angular.png',
+  pbColor: 'red',
+  // pbDirection: PB_DIRECTION.leftToRight,
+  // pbThickness: 5,
+  // text: 'Welcome to ngx-ui-loader',
+  // textColor: '#FFFFFF',
+  // textPosition: POSITION.centerCenter
+};
+ 
 
 @NgModule({
   declarations: [
@@ -41,7 +61,10 @@ import { TimecardDailyComponent } from './components/pages/timecard-daily/timeca
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
+    NgxUiLoaderHttpModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

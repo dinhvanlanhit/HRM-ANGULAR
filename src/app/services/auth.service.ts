@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Users } from './../models';
+import { environment } from '../../environments/environment';
+// const httpOptions = {
+//     headers: new HttpHeaders({ 
+//         'Content-Type': 'application/json' ,
+//         'Authorization': JSON.parse(localStorage.getItem('currentUser'))
+//     })
+// };
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private currentUserSubject: BehaviorSubject<Users>;
@@ -15,19 +22,17 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
     login(username, password) {
-        // return true;
-        return this.http.post<any>(`/users/authenticate`, { username, password })
+        return this.http.post<any>(`${environment.apiUrl}/auth/login`, { username, password })
             .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
     }
+    getInfoUser(){
+    }
     logout() {
-        // remove user from local storage and set current user to null
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
     }
-
 }
