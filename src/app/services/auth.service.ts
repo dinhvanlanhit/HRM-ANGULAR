@@ -4,12 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Users } from './../models';
 import { environment } from '../../environments/environment';
-// const httpOptions = {
-//     headers: new HttpHeaders({ 
-//         'Content-Type': 'application/json' ,
-//         'Authorization': JSON.parse(localStorage.getItem('currentUser'))
-//     })
-// };
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private currentUserSubject: BehaviorSubject<Users>;
@@ -22,14 +16,13 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
     login(username, password) {
-        return this.http.post<any>(`${environment.apiUrl}/auth/login`, { username, password })
+        return this.http.post<any>(`${environment.ApiUrl}/auth/login`, { username, password })
             .pipe(map(user => {
+                document.cookie = 'HRM='+JSON.stringify(user);
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
-    }
-    getInfoUser(){
     }
     logout() {
         localStorage.removeItem('currentUser');

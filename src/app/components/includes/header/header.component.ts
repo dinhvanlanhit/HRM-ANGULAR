@@ -1,20 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services'
+import { UserService,AuthService } from '../../../services'
+import { Users} from './../../../models';
+import { Subscription } from 'rxjs';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
- 
+
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private _AuthService:AuthService) { }
+  currentUser: Users;
+  users: Users[] = [];
+  constructor(
+    private _UserService:UserService,
+    private _AuthService:AuthService
+    ) { }
 
   ngOnInit() {
-    this.getInfoUser();
+    this.loadInfoUser();
   }
-  getInfoUser(){
-    this._AuthService.getInfoUser();
-  }
+  private loadInfoUser() {
+        this._UserService.getInfoUser().pipe(first()).subscribe(users => {
+            this.users = users;
+
+        });
+  };
   logout(){
     this._AuthService.logout();
   }

@@ -12,6 +12,7 @@ import { AuthComponent} from './components/auth/auth.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { TimecardComponent } from './components/pages/timecard/timecard.component';
 import { TimecardDailyComponent } from './components/pages/timecard-daily/timecard-daily.component';
+import {  ProfileComponent} from './components/pages/profile/profile.component';
 const routes: Routes = [
   {
     path: '',
@@ -29,13 +30,13 @@ const routes: Routes = [
     path: '',
     component: LayoutAdminComponent,
     children: [
-      
       {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
       {path: 'timecard', component: TimecardComponent,canActivate:[AuthGuard]},
       {path: 'timecard/daily', component: TimecardDailyComponent,canActivate:[AuthGuard]},
+      {path: 'profile', component: ProfileComponent,canActivate:[AuthGuard]},
     ]
   },
- 
+
   {path: '**', redirectTo: 'dashboard'}
 ];
 @NgModule({

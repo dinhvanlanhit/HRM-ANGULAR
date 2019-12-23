@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION,PB_DIRECTION, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,6 +19,7 @@ import { AuthComponent} from './components/auth/auth.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component'
 import { TimecardComponent } from './components/pages/timecard/timecard.component';
 import { TimecardDailyComponent } from './components/pages/timecard-daily/timecard-daily.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -54,7 +56,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     // Admin pages
     DashboardComponent,
     TimecardComponent,
-    TimecardDailyComponent
+    TimecardDailyComponent,
+    ProfileComponent
   ],
   imports: [
     
@@ -66,7 +69,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
     NgxUiLoaderHttpModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

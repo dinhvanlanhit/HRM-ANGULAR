@@ -17,45 +17,48 @@ export class AuthComponent implements OnInit {
   public returnUrl: string;
 
   constructor(
+      // tslint:disable-next-line: variable-name
       private _FormBuilder: FormBuilder,
+      // tslint:disable-next-line: variable-name
       private _AuthService: AuthService,
       private route: ActivatedRoute,
       private router: Router,
-     
-  ){
+
+  ) {
 
     // redirect to home if already logged in
     if (this._AuthService.currentUserValue) {
       this.router.navigate(['/auth/login']);
   }
   }
-  
+
   ngOnInit() {
     this.createForm();
   }
-  createForm(){
+  createForm() {
     this.FormLogin = this._FormBuilder.group({
       username: ['073', Validators.required],
       password: ['12345', Validators.required]
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard';
   }
   get f() { return this.FormLogin.controls; }
 
+  // tslint:disable-next-line: one-line
   onSubmitLogin(){
     this.submitted = true;
     if (this.FormLogin.invalid) {
       return;
     }
     this.loading = true;
-    this._AuthService.login(this.f.username.value,this.f.password.value)
+    this._AuthService.login(this.f.username.value, this.f.password.value)
     .pipe(first())
             .subscribe(
                 data => {
                     // this.router.navigate([this.returnUrl]);
                     this.submitted = false;
                     this.loading = false;
-                    window.location.href="dashboard";
+                    window.location.href ='dashboard';
                     // alert(this.returnUrl);
                 },
                 error => {
@@ -63,8 +66,8 @@ export class AuthComponent implements OnInit {
                     this.submitted = false;
                     this.loading = false;
                 });
-    
+
   }
- 
+
 
 }

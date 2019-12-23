@@ -277,8 +277,8 @@
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                             <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
                             <span class="user-info">
-                                <small>Welcome,</small>
-                                Jason
+
+                                {{users.username}}
                             </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
@@ -288,14 +288,14 @@
                             <li>
                                 <a href="#">
                                     <i class="ace-icon fa fa-cog"></i>
-                                    Settings
+                                    Cài Đặt
                                 </a>
                             </li>
 
                             <li>
-                                <a href="profile.html">
+                                <a [routerLink]="['/profile']">
                                     <i class="ace-icon fa fa-user"></i>
-                                    Profile
+                                    Hô Sơ Cá Nhân
                                 </a>
                             </li>
 

@@ -1432,7 +1432,7 @@ pre.prettyprint {
 	white-space: nowrap;
 	text-align: left;
 	vertical-align: top;
-	line-height: 15px;
+	line-height: 30px;
 	position: relative;
 	top: 6px
 }
