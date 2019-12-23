@@ -25,6 +25,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/assets/css/bootstrap.min.css" ,
               "src/assets/font-awesome/4.5.0/css/font-awesome.min.css" ,
               "src/assets/css/fonts.googleapis.com.css" ,
@@ -32,7 +33,7 @@
               "src/assets/css/jquery-ui.custom.min.css",
               "src/assets/css/fullcalendar.min.css",
               "src/assets/css/ace-skins.min.css" ,
-              "src/assets/css/ace-rtl.min.css" 
+              "src/assets/css/ace-rtl.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

@@ -15,6 +15,7 @@ export class AuthComponent implements OnInit {
   public loading = false;
   public submitted = false;
   public returnUrl: string;
+  public errorAlert = false;
 
   constructor(
       // tslint:disable-next-line: variable-name
@@ -31,7 +32,6 @@ export class AuthComponent implements OnInit {
       this.router.navigate(['/auth/login']);
   }
   }
-
   ngOnInit() {
     this.createForm();
   }
@@ -58,13 +58,17 @@ export class AuthComponent implements OnInit {
                     // this.router.navigate([this.returnUrl]);
                     this.submitted = false;
                     this.loading = false;
-                    window.location.href ='dashboard';
+                    window.location.href =this.returnUrl;
                     // alert(this.returnUrl);
                 },
                 error => {
                     // this.alertService.error(error);
                     this.submitted = false;
                     this.loading = false;
+                    this.errorAlert = true;
+                    setTimeout(() => {
+                      this.errorAlert = false;
+                    }, 5000);
                 });
 
   }

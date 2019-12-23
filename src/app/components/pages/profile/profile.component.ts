@@ -3,6 +3,8 @@ import { UserIfosService } from '../../../services';
 import { UsersInfos} from './../../../models';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -10,8 +12,13 @@ import { first } from 'rxjs/operators';
 })
 export class ProfileComponent implements OnInit {
   UsersInfos: UsersInfos[] = [];
-  constructor(private _UserIfosService:UserIfosService){}
+  constructor(
+    private _UserIfosService:UserIfosService,
+    private _localeService: BsLocaleService
+    ){}
   ngOnInit() {
+
+
       this.GetProFile();
   }
   private GetProFile(){

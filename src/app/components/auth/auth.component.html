@@ -17,13 +17,16 @@
                                         </h4>
 
                                         <div class="space-6"></div>
+                                        <alert *ngIf="errorAlert" type="danger">
+                                          <strong>ID hoặt mật khẩu không đúng !</strong>
+                                        </alert>
+                                        <div class="space-6"></div>
 
-                                        
                                         <form [formGroup]="FormLogin" (ngSubmit)="onSubmitLogin()">
-                                            
+
                                                 <div>
                                                     <span *ngIf="submitted && f.username.errors" for="form-field-mask-3">
-                                                        <i class="ace-icon red fa fa-exclamation-circle"></i> 
+                                                        <i class="ace-icon red fa fa-exclamation-circle"></i>
                                                         <span  *ngIf="f.username.errors.required" class="text-error red">
                                                             Vui lòng nhập ID
                                                         </span>
@@ -33,14 +36,14 @@
                                                         <span class="input-group-addon">
                                                             <i class="ace-icon fa fa-user"></i>
                                                         </span>
-                                                      
+
                                                     </div>
-                                                   
+
                                                 </div>
                                                 <div class="space space-4"></div>
                                                 <div>
                                                     <span *ngIf="submitted && f.password.errors" for="form-field-mask-3">
-                                                        <i class="ace-icon red fa fa-exclamation-circle"></i> 
+                                                        <i class="ace-icon red fa fa-exclamation-circle"></i>
                                                         <span  *ngIf="f.password.errors.required" class="text-error red">
                                                             Vui lòng nhập mật khẩu
                                                         </span>
@@ -51,41 +54,41 @@
                                                             <i class="ace-icon fa fa-lock"></i>
                                                         </span>
                                                     </div>
-                                                    
+
                                                 </div>
-                                                
-                                                
+
+
 
                                                 <div class="space"></div>
 
                                                 <div class="clearfix">
                                                     <label class="inline">
                                                         <input type="checkbox" class="ace" />
-                                                        <span class="lbl"> Remember Me</span>
+                                                        <span class="lbl"> Nhớ đăng nhập</span>
                                                     </label>
 
-                                                    <button [disabled]="loading" type="submit" class="width-35 pull-right btn btn-sm btn-success">
-                                                        <i class="ace-icon fa fa-key"></i>
-                                                        <span class="bigger-110">Login</span> <i *ngIf="loading" class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>
-                                                      
+                                                    <button  [disabled]="loading" type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+
+                                                        <span class="bigger-110"> Đăng nhập </span> <i *ngIf="loading" class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>
+
                                                     </button>
                                                 </div>
 
                                                 <div class="space-4"></div>
-                                           </form>  
-                                        
+                                           </form>
+
                                         <div class="space-6"></div>
 
-                                        
+
                                     </div><!-- /.widget-main -->
 
-                                    
+
                                 </div><!-- /.widget-body -->
                             </div><!-- /.login-box -->
-                       
+
                         </div><!-- /.position-relative -->
 
-                        
+
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
