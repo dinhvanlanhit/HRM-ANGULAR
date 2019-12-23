@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService,AuthService } from '../../../services'
-import { Users} from './../../../models';
+import { UserIfosService,AuthService } from '../../../services';
+import { Users,UsersInfos} from './../../../models';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 @Component({
@@ -9,10 +9,9 @@ import { first } from 'rxjs/operators';
 
 })
 export class HeaderComponent implements OnInit {
-  currentUser: Users;
-  users: Users[] = [];
+  UsersInfos: UsersInfos[] = [];
   constructor(
-    private _UserService:UserService,
+    private _UserIfosService:UserIfosService,
     private _AuthService:AuthService
     ) { }
 
@@ -20,9 +19,8 @@ export class HeaderComponent implements OnInit {
     this.loadInfoUser();
   }
   private loadInfoUser() {
-        this._UserService.getInfoUser().pipe(first()).subscribe(users => {
-            this.users = users;
-
+        this._UserIfosService.getInfoUser().pipe(first()).subscribe(data => {
+            this.UsersInfos = data;
         });
   };
   logout(){
