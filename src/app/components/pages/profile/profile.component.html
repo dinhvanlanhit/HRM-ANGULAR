@@ -398,9 +398,15 @@
                     <div class="widget-main">
                       <div class="center">
                         <span class="profile-picture">
-                          <img id="avatar" class="editable img-responsive editable-click editable-empty" alt="Alex's Avatar" src="assets/images/avatars/profile-pic.jpg">
+                          <label for="change-avatar">
+                            <img  id="avatar" class="editable img-responsive editable-click editable-empty" [src]="imageUrl" >
+                            
+                          </label>
                         </span>
-                        <div class="space-4"></div>
+                       
+                        <div class="space-4">
+                          <input id="change-avatar"class="file-input hide"  type="file"  #fileInput (change)="onChange(fileInput.files[0])"/>
+                        </div>
                         <div class="width-100 label label-info label-xlg ">
                           <div class="inline position-relative">
                             <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
@@ -416,7 +422,7 @@
                       <div class="space-6"></div>
                       <div class="row">
                         <div class="col-md-12 center">
-                          <bs-datepicker-inline [bsValue]="bsInlineValue"></bs-datepicker-inline>
+                          <!-- <bs-datepicker-inline [bsValue]="bsInlineValue"></bs-datepicker-inline> -->
                         </div>
 
                       </div>

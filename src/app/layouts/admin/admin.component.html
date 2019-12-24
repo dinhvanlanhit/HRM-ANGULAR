@@ -1,5 +1,9 @@
 <div id="navbar" class="navbar navbar-default    navbar-fixed-top      ace-save-state">
-<app-header [full_name] = "UsersInfos.full_name"></app-header>
+<app-header 
+[full_name] = "UsersInfos.full_name"
+(full_name) = "get_full_name($event)"
+
+></app-header>
 </div>
     <div class="main-container ace-save-state" id="main-container">
              <div id="sidebar" class="sidebar       sidebar-fixed           responsive                    ace-save-state">

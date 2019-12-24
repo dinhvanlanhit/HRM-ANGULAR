@@ -5,7 +5,7 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { LayoutAdminComponent} from './layouts/admin/admin.component';
 import { LayoutAuthComponent} from './layouts/auth/auth.component';
 //
-import { AuthGuard } from './helpers';
+import { AuthGuard ,CheckAuthGuard} from './helpers';
 // Auth pages
 import { AuthComponent} from './components/auth/auth.component';
 //Admin pages
@@ -16,14 +16,15 @@ import {  ProfileComponent} from './components/pages/profile/profile.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'auth/login',
     pathMatch: 'full',
+    
   },
   {
     path: '',
     component: LayoutAuthComponent,
     children: [
-      {path: 'auth/login', component: AuthComponent},
+      {path: 'auth/login', component: AuthComponent },
     ]
   },
   {

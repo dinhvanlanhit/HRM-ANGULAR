@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input ,Output,EventEmitter } from '@angular/core';
 import { ProfileService } from '../../../services';
 import { UsersInfos} from './../../../models';
 import { Subscription } from 'rxjs';
@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlockUI, NgBlockUI } from "ng-block-ui";
+declare var $: any;
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -14,6 +15,7 @@ import { BlockUI, NgBlockUI } from "ng-block-ui";
 
 export class ProfileComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
+  @Output('full_name') full_name =new EventEmitter<any>();
   public FormUpdateProfile: FormGroup;
   constructor(
     private _FormBuilder: FormBuilder,
@@ -68,6 +70,8 @@ export class ProfileComponent implements OnInit {
      this.blockUI.start('Cập Nhập ..');
      this._ProfileService.postUpdateUserInfo(this.FormUpdateProfile.value).pipe(first()).subscribe(data =>{
           // console.log(data);
+          this.full_name.emit(this.FormUpdateProfile.value.full_name);
+          $('#user-info').text(this.FormUpdateProfile.value.full_name);
           this.blockUI.stop();
      },error => {
         this.blockUI.stop();
@@ -85,4 +89,23 @@ export class ProfileComponent implements OnInit {
       this.blockUI.stop();
     });
   }
+  file: File;
+  imageUrl: string | ArrayBuffer ="https://bulma.io/images/placeholders/480x480.png";
+  fileName: string;
+  onChange(file: File) {
+    if (file) {
+      this.fileName = file.name;
+      this.file = file;
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = event => {
+        this._ProfileService.postChangeAvatar(file).pipe(first()).subscribe(data=>{
+           console.log(data);
+          this.imageUrl = reader.result;
+        });
+      };
+     
+    }
+  }
+  
 }

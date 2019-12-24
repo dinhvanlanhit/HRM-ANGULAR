@@ -276,7 +276,7 @@
                     <li class="light-blue dropdown-modal">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                             <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
-                            <span class="user-info">{{full_name}} </span>
+                            <span id="user-info" class="user-info">{{full_name}} </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
                         </a>
@@ -299,7 +299,7 @@
                             <li class="divider"></li>
 
                             <li>
-                                <a [attr.href]="['#']" (click)="logout()">
+                                <a [attr.href]="['/auth/login']" (click)="logout()">
                                     <i class="ace-icon fa fa-power-off"></i>
                                     Đăng xuất
                                 </a>

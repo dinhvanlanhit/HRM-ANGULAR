@@ -15,6 +15,14 @@ export class ProfileService {
                 return data;
         }));
     }
+    postChangeAvatar(file: File){
+        let formData = new FormData();
+         formData.append("file", file);
+        
+        return this.http.post(`${environment.ApiUrl}/profile/postChangeAvatar`,formData).pipe(map(data => {
+            return data;
+        }));
+    }
 }
 
 	

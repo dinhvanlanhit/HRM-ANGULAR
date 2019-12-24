@@ -3,6 +3,7 @@ import { ProfileService,AuthService } from '../../../services';
 import { Users,UsersInfos} from './../../../models';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,4 +21,8 @@ export class HeaderComponent implements OnInit {
   logout(){
     this._AuthService.logout();
   }
+  get_full_name(value){
+    alert();
+    console.log(value);
+}
 }
