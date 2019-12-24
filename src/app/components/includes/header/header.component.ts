@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserIfosService,AuthService } from '../../../services';
+import { Component, OnInit ,Input} from '@angular/core';
+import { ProfileService,AuthService } from '../../../services';
 import { Users,UsersInfos} from './../../../models';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -9,20 +9,14 @@ import { first } from 'rxjs/operators';
 
 })
 export class HeaderComponent implements OnInit {
+  @Input('full_name') full_name :String;
   UsersInfos: UsersInfos[] = [];
   constructor(
-    private _UserIfosService:UserIfosService,
+    private _ProfileService:ProfileService,
     private _AuthService:AuthService
     ) { }
-
   ngOnInit() {
-    this.loadInfoUser();
   }
-  private loadInfoUser() {
-        this._UserIfosService.getInfoUser().pipe(first()).subscribe(data => {
-            this.UsersInfos = data;
-        });
-  };
   logout(){
     this._AuthService.logout();
   }

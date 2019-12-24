@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule,AlertModule } from 'ngx-bootstrap';
-
+import { BlockUIModule } from 'ng-block-ui';
 
 
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
@@ -53,7 +53,8 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    BlockUIModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

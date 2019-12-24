@@ -24,6 +24,7 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "ng-block-ui": "^2.1.8",
     "ngx-bootstrap": "^5.2.0",
     "ngx-ui-loader": "^8.0.0",
     "open-iconic": "^1.1.1",

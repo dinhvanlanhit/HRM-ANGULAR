@@ -1,8 +1,7 @@
 export class UsersInfos{
   public users_id:Number;
   public email:String;
-  public first_name:String;
-  public last_name:String;
+  public full_name:String;
   public english_name:String;
   public nickname:String;
   public birthday:String;
