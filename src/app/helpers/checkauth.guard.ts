@@ -11,8 +11,8 @@ export class CheckAuthGuard implements CanActivate {
     ) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const currentUser = this._AuthService.currentUserValue;
-        if (currentUser) {
+        const HRM_APP = this._AuthService.HRM_APP_VALUE;
+        if (HRM_APP) {
              this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url }});
         }else{
             this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url }});

@@ -1,6 +1,7 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders, } from '@angular/common/http';
+
 import { UsersInfos } from './../models';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
@@ -15,11 +16,20 @@ export class ProfileService {
                 return data;
         }));
     }
-    postChangeAvatar(file: File){
-        let formData = new FormData();
-         formData.append("file", file);
-        
-        return this.http.post(`${environment.ApiUrl}/profile/postChangeAvatar`,formData).pipe(map(data => {
+    postChangeAvatar(FILE){
+        const formData  = new FormData();
+        formData.append('FILE',FILE,FILE.name);
+        const HttpUploadOptions = {
+            headers: new HttpHeaders({ 
+                'Content-Type': 'multipart/form-data',
+                'Accept': 'application/json'
+             })
+        }
+        return this.http.post(`${environment.ApiUrl}/profile/postChangeAvatar`,
+        formData,
+        // HttpUploadOptions
+        ).pipe(map(data => {
+            console.log(data);
             return data;
         }));
     }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthService } from './../../services';
+import { AuthService,ProfileService } from './../../services';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -22,13 +22,14 @@ export class AuthComponent implements OnInit {
       private _FormBuilder: FormBuilder,
       // tslint:disable-next-line: variable-name
       private _AuthService: AuthService,
+      private _ProfileService:ProfileService,
       private route: ActivatedRoute,
       private router: Router,
 
   ) {
 
     // redirect to home if already logged in
-    if (this._AuthService.currentUserValue) {
+    if (this._AuthService.HRM_APP_VALUE) {
       this.router.navigate(['/auth/login']);
   }
   }
@@ -58,8 +59,11 @@ export class AuthComponent implements OnInit {
                     // this.router.navigate([this.returnUrl]);
                     this.submitted = false;
                     this.loading = false;
-                    window.location.href =this.returnUrl;
-                    // alert(this.returnUrl);
+                    this._ProfileService.getProFile().pipe(first()).subscribe(INFO=>{
+                        localStorage.setItem('INFO',JSON.stringify(INFO));
+                        window.location.href =this.returnUrl;
+                    });
+                   
                 },
                 error => {
                     // this.alertService.error(error);

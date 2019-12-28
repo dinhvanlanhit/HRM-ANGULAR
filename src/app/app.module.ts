@@ -46,18 +46,20 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
     ProfileComponent
   ],
   imports: [
-
+   
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
     BsDatepickerModule.forRoot(),
     AlertModule.forRoot(),
     BlockUIModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+   
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

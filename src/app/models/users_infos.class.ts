@@ -4,6 +4,7 @@ export class UsersInfos{
   public full_name:String;
   public english_name:String;
   public nickname:String;
+  public introduce:String;
   public birthday:String;
   public sex:Number;
   public age:Number;

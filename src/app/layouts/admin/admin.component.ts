@@ -4,6 +4,8 @@ import { UsersInfos } from './../../models';
 import { ProfileService } from './../../services';
 import { environment } from '../../../environments/environment';
 import { first } from 'rxjs/operators';
+import { AuthService } from '../../services';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html'
@@ -11,15 +13,22 @@ import { first } from 'rxjs/operators';
 export class LayoutAdminComponent implements OnInit {
  
   UsersInfos: UsersInfos[] = [];
-  constructor(private _ProfileService:ProfileService) { }
+  constructor(
+    private _ProfileService:ProfileService,
+    private router: Router,
+    private _AuthService: AuthService
+  ) { }
   ngOnInit() {
+    const HRM_APP = this._AuthService.HRM_APP_VALUE;
+    if (!HRM_APP) {
+      this.router.navigate(['/auth/login']);
+      return true;
+    }
     this.GetSkinClass();
   }
   private GetSkinClass(){
-    return this._ProfileService.getProFile().pipe(first()).subscribe(data => {
-      this.UsersInfos = data;
-      document.body.className= data['skin_class']==null?'no-skin':data['skin_class'];
-    });
+    this.UsersInfos  = JSON.parse(localStorage.getItem('INFO'));
+    document.body.className = this.UsersInfos['skin_class'];
   }
 
 }

@@ -405,7 +405,7 @@
                         </span>
                        
                         <div class="space-4">
-                          <input id="change-avatar"class="file-input hide"  type="file"  #fileInput (change)="onChange(fileInput.files[0])"/>
+                          <input id="change-avatar"class="file-input hide"  type="file"   (change)="onChange($event)"/>
                         </div>
                         <div class="width-100 label label-info label-xlg ">
                           <div class="inline position-relative">
@@ -437,5 +437,6 @@
 
       </div>
 </div>
+<!-- <ng-snotify class="{{style}}"></ng-snotify> -->
 
 
