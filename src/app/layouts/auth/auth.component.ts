@@ -11,13 +11,14 @@ export class LayoutAuthComponent implements OnInit {
         private _AuthService: AuthService
   ) { }
   ngOnInit() {
-        const HRM_APP = this._AuthService.HRM_APP_VALUE;
-        if (HRM_APP) {
-            this.router.navigate(['/dashboard']);
-            return true;
-        }else{
-          document.body.className='login-layout light-login';
-        }
+         document.body.className='login-layout light-login';
+        // const HRM_APP = this._AuthService.HRM_APP_VALUE;
+        // if (HRM_APP) {
+        //     this.router.navigate(['/dashboard']);
+        //     return true;
+        // }else{
+        //   document.body.className='login-layout light-login';
+        // }
         
   }
 }

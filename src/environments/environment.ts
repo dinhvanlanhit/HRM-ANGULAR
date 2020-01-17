@@ -3,9 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:4000',
-  ApiUrl:'http://api.com/api'
+  production: true,
+  WebUrl: 'http://localhost:4000',
+  ApiUrl:'http://api.com/api',
+  AIP:'http://api.com/',
+  IMG_URL_AVATAR : "https://bulma.io/images/placeholders/480x480.png"
 };
 
 /*

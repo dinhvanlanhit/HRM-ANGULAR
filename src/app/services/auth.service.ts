@@ -24,7 +24,7 @@ export class AuthService {
             }));
     }
     logout() {
-        localStorage.removeItem('HRM_APP');
+        localStorage.cle('HRM_APP');
         localStorage.removeItem('INFO');
         this.HRM_APP_SUBJECT.next(null);
     }

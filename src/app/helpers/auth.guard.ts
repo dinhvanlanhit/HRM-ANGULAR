@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
         private _AuthService: AuthService
     ) {}
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('HRM_APP')) {
+        if (this._AuthService.HRM_APP_VALUE) {
             // authorised so return true
             return true;
         }

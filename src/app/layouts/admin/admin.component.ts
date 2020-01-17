@@ -13,6 +13,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 export class LayoutAdminComponent implements OnInit {
  
   UsersInfos: UsersInfos[] = [];
+  AVATAR:string;
   constructor(
     private _ProfileService:ProfileService,
     private router: Router,
@@ -21,6 +22,7 @@ export class LayoutAdminComponent implements OnInit {
   ngOnInit() {
     const HRM_APP = this._AuthService.HRM_APP_VALUE;
     if (!HRM_APP) {
+
       this.router.navigate(['/auth/login']);
       return true;
     }
@@ -28,7 +30,9 @@ export class LayoutAdminComponent implements OnInit {
   }
   private GetSkinClass(){
     this.UsersInfos  = JSON.parse(localStorage.getItem('INFO'));
+    this.AVATAR = this.UsersInfos['avatar']==null?this.AVATAR: environment.AIP+'/'+this.UsersInfos['avatar'];
     document.body.className = this.UsersInfos['skin_class'];
+    console.log(this.AVATAR)
   }
 
 }

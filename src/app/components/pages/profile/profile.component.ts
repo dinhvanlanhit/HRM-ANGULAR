@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlockUI, NgBlockUI } from "ng-block-ui";
+import { environment } from '../../../../environments/environment';
 
 declare var $: any;
 @Component({
@@ -15,10 +16,10 @@ declare var $: any;
 })
 
 export class ProfileComponent implements OnInit {
+  full_name:string;
   selectedFile:File =null;
-  imageUrl: string | ArrayBuffer ="https://bulma.io/images/placeholders/480x480.png";
+  imageUrl: string | ArrayBuffer = environment.IMG_URL_AVATAR;
   @BlockUI() blockUI: NgBlockUI;
-  @Output('full_name') full_name =new EventEmitter<any>();
   public FormUpdateProfile: FormGroup;
   constructor(
     private _FormBuilder: FormBuilder,
@@ -33,7 +34,8 @@ export class ProfileComponent implements OnInit {
     this.blockUI.start('Vui lòng chờ ... ');
     this._ProfileService.getProFile().pipe(first()).subscribe(data => {
       this.blockUI.stop();
-      this.imageUrl = data['avatar']==''?this.imageUrl:data['avatar'];
+      this.full_name = data['full_name'];
+      this.imageUrl = data['avatar']==null?this.imageUrl: environment.AIP+'/'+data['avatar'];
       this.FormUpdateProfile.patchValue(data);
     },error => {
       this.blockUI.stop();
@@ -74,8 +76,7 @@ export class ProfileComponent implements OnInit {
   onSubmitFormUpdateProfile(){
      this.blockUI.start('Cập nhập ..');
      this._ProfileService.postUpdateUserInfo(this.FormUpdateProfile.value).pipe(first()).subscribe(data =>{
-          this.full_name.emit(this.FormUpdateProfile.value.full_name);
-          $('#user-info').text(this.FormUpdateProfile.value.full_name);
+          $('#user-info').text(this.full_name = this.FormUpdateProfile.value.full_name);
           this.blockUI.stop();
           this.SET_INFO();
      },error => {
@@ -102,6 +103,7 @@ export class ProfileComponent implements OnInit {
       reader.onload = event => {
         this._ProfileService.postChangeAvatar(this.selectedFile).pipe(first()).subscribe(data=>{
             this.imageUrl = reader.result;
+            $("#nav_user_poto").attr('src',reader.result);
             this.SET_INFO();
         });
       };

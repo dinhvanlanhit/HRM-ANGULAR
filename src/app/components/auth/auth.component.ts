@@ -56,7 +56,7 @@ export class AuthComponent implements OnInit {
     .pipe(first())
             .subscribe(
                 data => {
-                    // this.router.navigate([this.returnUrl]);
+                    // this.router.navigate([this.returnUrl]);sss
                     this.submitted = false;
                     this.loading = false;
                     this._ProfileService.getProFile().pipe(first()).subscribe(INFO=>{

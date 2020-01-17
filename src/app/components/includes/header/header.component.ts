@@ -1,6 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { ProfileService,AuthService } from '../../../services';
-import { Users,UsersInfos} from './../../../models';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
@@ -11,9 +10,8 @@ import { first } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
   @Input('full_name') full_name :String;
-  UsersInfos: UsersInfos[] = [];
+  @Input('avatar') avatar :String;
   constructor(
-    private _ProfileService:ProfileService,
     private _AuthService:AuthService
     ) { }
   ngOnInit() {
@@ -21,8 +19,4 @@ export class HeaderComponent implements OnInit {
   logout(){
     this._AuthService.logout();
   }
-  get_full_name(value){
-    alert();
-    console.log(value);
-}
 }
